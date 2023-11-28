@@ -1,0 +1,14 @@
+ # +90 if target is in front through to -90 if it is behind
+ if observation <=90:
+                reward = 90-abs(observation)
+            elif observation <=270:
+                #behind
+                reward = -90+abs(observation-180)
+            elif observation <=360:
+                reward = 90-abs(360-observation)
+
+ # range to target compared to last step
+ reward = prevRange-newRange
+
+  # range to target and turn direction
+  reward = 10*(prevRange-newRange)+0.1*(oldBearing-newBearing)
